@@ -1,4 +1,4 @@
-package com.spring.security;
+package com.spring.security.models;
 
 import java.util.Arrays;
 import java.util.Collection;
