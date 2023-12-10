@@ -29,6 +29,8 @@ public class SecurityConfiguration {
 				.requestMatchers("/**").permitAll())
 				.formLogin(login -> login.permitAll());
 		
+		httpSecurity.csrf(csrf -> csrf.disable());
+		
 		return httpSecurity.build();
 	}
 }
