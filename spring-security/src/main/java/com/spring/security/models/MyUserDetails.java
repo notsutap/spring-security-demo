@@ -3,7 +3,6 @@ package com.spring.security.models;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,7 +22,7 @@ public class MyUserDetails implements UserDetails{
 	
 	private boolean active;
 	
-	private List<GrantedAuthority> authorities;
+	private List<SimpleGrantedAuthority> authorities;
 	
 	private boolean accountNonExpired;
 	
@@ -41,7 +40,7 @@ public class MyUserDetails implements UserDetails{
 		this.credentialsNonExpired = user.isCredentialsNonExpired();
 		this.authorities = Arrays.stream(user.getRoles().split(","))
 						.map(SimpleGrantedAuthority::new)
-						.collect(Collectors.toList());
+						.toList();
 				
 	}
 
@@ -59,31 +58,26 @@ public class MyUserDetails implements UserDetails{
 
 	@Override
 	public String getUsername() {
-		// TODO Auto-generated method stub
 		return userName;
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
 		return accountNonExpired;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
 		return accountNonLocked;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
 		return credentialsNonExpired;
 	}
 
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
 		return active;
 	}
 
